@@ -155,7 +155,7 @@ class HeaderState extends State<Header> {
               children: [
                 ClipRRect(
                   child: Image.asset(
-                    'assets/${language.toLowerCase()}.png',
+                    'assets/misc/${language.toLowerCase()}.png',
                     width: 24,
                     height: 16,
                     fit: BoxFit.cover,

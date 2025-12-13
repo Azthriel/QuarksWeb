@@ -13,7 +13,8 @@ class PortfolioSection extends StatefulWidget {
 
 class PortfolioSectionState extends State<PortfolioSection> {
   final List<String> imgList = [
-    'assets/janodanihugoproyect.png',
+    'assets/portfolio/janodanihugoproyect.png',
+    'assets/portfolio/eventosspa.png',
   ];
 
   @override

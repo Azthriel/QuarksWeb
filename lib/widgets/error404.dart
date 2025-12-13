@@ -74,7 +74,7 @@ class _NotFoundPageState extends State<NotFoundPage>
             child: SizedBox(
               height: 120,
               child: Image.asset(
-                'assets/amongus_crewmate.png',
+                'assets/misc/amongus_crewmate.png',
                 fit: BoxFit.contain,
               ),
             ),

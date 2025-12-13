@@ -13,13 +13,13 @@ class ToolsSection extends StatefulWidget {
 
 class ToolsSectionState extends State<ToolsSection> {
   final List<String> imgList = [
-    'assets/awsLogo.png',
-    'assets/dartLogo.png',
-    'assets/firebaseLogo.png',
-    'assets/flutterLogo.png',
-    'assets/androidLogo.png',
-    'assets/iosLogo.png',
-    'assets/pythonLogo.webp',
+    'assets/tools/awsLogo.png',
+    'assets/tools/dartLogo.png',
+    'assets/tools/firebaseLogo.png',
+    'assets/tools/flutterLogo.png',
+    'assets/tools/androidLogo.png',
+    'assets/tools/iosLogo.png',
+    'assets/tools/pythonLogo.webp',
   ];
 
   @override

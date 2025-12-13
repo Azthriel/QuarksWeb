@@ -120,7 +120,7 @@ class IntroductionSectionState extends State<IntroductionSection>
                           borderRadius: BorderRadius.circular(30),
                         ),
                         elevation: 10,
-                        shadowColor: color0.withValues(alpha:0.5),
+                        shadowColor: color0.withValues(alpha: 0.5),
                         textStyle: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -146,7 +146,7 @@ class IntroductionSectionState extends State<IntroductionSection>
                 child: AspectRatio(
                   aspectRatio: 1.2,
                   child: Image.asset(
-                    'assets/office.png',
+                    'assets/misc/office.png',
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -198,7 +198,7 @@ class IntroductionSectionState extends State<IntroductionSection>
                 borderRadius: BorderRadius.circular(30),
               ),
               elevation: 10,
-              shadowColor: color0.withValues(alpha:0.5),
+              shadowColor: color0.withValues(alpha: 0.5),
               textStyle: TextStyle(
                 fontSize: constraints.maxWidth > 600 ? 22 : 18,
                 fontWeight: FontWeight.bold,
@@ -220,7 +220,7 @@ class IntroductionSectionState extends State<IntroductionSection>
           child: AspectRatio(
             aspectRatio: 1.2,
             child: Image.asset(
-              'assets/office.png',
+              'assets/misc/office.png',
               fit: BoxFit.contain,
             ),
           ),

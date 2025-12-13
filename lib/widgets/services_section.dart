@@ -113,7 +113,7 @@ class ServicesSectionState extends State<ServicesSection>
                   }
                 },
                 child: _buildService(
-                  imagePath: 'assets/mobile_app.png',
+                  imagePath: 'assets/services/mobile_app.png',
                   title: appMobileTitle(lenguaje.value),
                   description: appMobileDescription(lenguaje.value),
                   isImageLeft: true,
@@ -130,7 +130,7 @@ class ServicesSectionState extends State<ServicesSection>
                   }
                 },
                 child: _buildService(
-                  imagePath: 'assets/web_development.png',
+                  imagePath: 'assets/services/web_development.png',
                   title: webDevelopmentTitle(lenguaje.value),
                   description: webDevelopmentDescription(lenguaje.value),
                   isImageLeft: false,
@@ -147,7 +147,7 @@ class ServicesSectionState extends State<ServicesSection>
                   }
                 },
                 child: _buildService(
-                  imagePath: 'assets/software_development.png',
+                  imagePath: 'assets/services/software_development.png',
                   title: customSoftwareTitle(lenguaje.value),
                   description: customSoftwareDescription(lenguaje.value),
                   isImageLeft: true,
