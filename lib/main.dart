@@ -49,11 +49,6 @@ class MyApp extends StatelessWidget {
         builder: (context, state) =>
             HomeScreen(analytics: analytics, localeCode: 'ES'),
       ),
-      GoRoute(
-        path: '/es/',
-        builder: (context, state) =>
-            HomeScreen(analytics: analytics, localeCode: 'ES'),
-      ),
     ],
     errorBuilder: (context, state) => const NotFoundPage(),
   );
@@ -69,7 +64,8 @@ class MyApp extends StatelessWidget {
           cursorColor: color3,
           selectionColor: color3.withAlpha(70),
           selectionHandleColor: color3,
-        ), tabBarTheme: const TabBarThemeData(indicatorColor: color3),
+        ),
+        tabBarTheme: const TabBarThemeData(indicatorColor: color3),
       ),
       routerConfig: router,
     );

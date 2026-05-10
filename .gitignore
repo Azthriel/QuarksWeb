@@ -10,10 +10,18 @@
 .svn/
 migrate_working_dir/
 lib/firebase_options.dart
-firebase.json
 firestore.indexes.json
 firestore.rules
 .firebaserc
+.metadata
+pubspec.lock
+linux/
+macos/
+windows/
+ios/
+android/
+.vscode/
+.firebase/
 
 # IntelliJ related
 *.iml
