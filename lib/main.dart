@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       final path = state.uri.path;
       if (path == '/') {
         final lang = PlatformDispatcher.instance.locale.languageCode;
-        return lang == 'es' ? '/es' : '/';
+        return lang == 'es' ? '/es' : null;
       }
       return null;
     },

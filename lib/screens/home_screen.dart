@@ -1,4 +1,6 @@
 // lib/screens/home_screen.dart
+import 'dart:html' as html;
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +16,7 @@ import '../widgets/tools.dart';
 
 class HomeScreen extends StatefulWidget {
   final FirebaseAnalytics analytics;
-  final String localeCode; // 'en' o 'es'
+  final String localeCode; // 'EN' o 'ES'
 
   const HomeScreen({
     super.key,
@@ -39,6 +41,14 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     // Establece el idioma inicial según la ruta
     changeLanguage(widget.localeCode);
+    // Sincroniza el atributo lang del HTML al cargar la pantalla
+    _updateHtmlLang(widget.localeCode);
+  }
+
+  /// Actualiza el atributo [lang] del <html> para SEO y accesibilidad.
+  /// Se llama al iniciar y cada vez que el usuario cambia el idioma.
+  void _updateHtmlLang(String localeCode) {
+    html.document.documentElement?.lang = localeCode.toLowerCase();
   }
 
   @override
@@ -61,52 +71,37 @@ class _HomeScreenState extends State<HomeScreen> {
           color: color1,
           child: Column(
             children: [
-              Container(
-                height: 150,
-                width: double.infinity,
-                color: color1,
+              DrawerHeader(
+                decoration: BoxDecoration(color: color3),
                 child: Center(
-                  child: Text(
-                    menu(lenguaje.value),
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: color0,
-                    ),
+                  child: ValueListenableBuilder<String>(
+                    valueListenable: lenguaje,
+                    builder: (context, value, child) {
+                      return Text(
+                        menu(value),
+                        style: const TextStyle(
+                          color: color1,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              Expanded(
-                child: ListView(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  children: [
-                    buildProfessionalDrawerButton(
-                        nosotros(lenguaje.value), _keyIntroduction),
-                    const SizedBox(height: 10),
-                    buildProfessionalDrawerButton(
-                        servicios(lenguaje.value), _keyServices),
-                    const SizedBox(height: 10),
-                    buildProfessionalDrawerButton(
-                        herramientas(lenguaje.value), _keyTools),
-                    const SizedBox(height: 10),
-                    buildProfessionalDrawerButton(
-                        clientes(lenguaje.value), _keyPortfolio),
-                    const SizedBox(height: 10),
-                    buildProfessionalDrawerButton(
-                        contacto(lenguaje.value), _keyContact),
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(
-                  '© 2024 Quarks Studio',
-                  style: TextStyle(
-                    color: color0,
-                    fontSize: 12,
-                  ),
-                ),
+              ValueListenableBuilder<String>(
+                valueListenable: lenguaje,
+                builder: (context, value, child) {
+                  return Column(
+                    children: [
+                      buildProfessionalDrawerButton(nosotros(value), _keyIntroduction),
+                      buildProfessionalDrawerButton(servicios(value), _keyServices),
+                      buildProfessionalDrawerButton(herramientas(value), _keyTools),
+                      buildProfessionalDrawerButton(clientes(value), _keyPortfolio),
+                      buildProfessionalDrawerButton(contacto(value), _keyContact),
+                    ],
+                  );
+                },
               ),
             ],
           ),
@@ -131,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Construye botón en Drawer (igual que antes)
+  // Construye botón en Drawer
   Widget buildProfessionalDrawerButton(String label, GlobalKey key) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -176,7 +171,8 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       changeLanguage(newLanguage);
     });
-    if (newLanguage == 'es') {
+    _updateHtmlLang(newLanguage);
+    if (newLanguage == 'ES') {
       context.go('/es');
     } else {
       context.go('/');
