@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quark_web/lenguajes.dart';
-import '../master.dart';
+import 'package:quark_web/core/constants/app_colors.dart';
+import 'package:quark_web/core/state/language_notifier.dart';
+import 'package:quark_web/core/l10n/app_strings.dart';
 
 class IntroductionSection extends StatefulWidget {
   const IntroductionSection({super.key, required this.onGoToServices});

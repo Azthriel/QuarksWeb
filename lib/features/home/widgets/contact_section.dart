@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quark_web/lenguajes.dart';
-
-import '../master.dart';
+import 'package:quark_web/core/constants/app_colors.dart';
+import 'package:quark_web/core/state/language_notifier.dart';
+import 'package:quark_web/core/l10n/app_strings.dart';
 
 class ContactSection extends StatefulWidget {
   const ContactSection({super.key});

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:quark_web/lenguajes.dart';
-import '../master.dart';
+import 'package:quark_web/core/constants/app_colors.dart';
+import 'package:quark_web/core/state/language_notifier.dart';
+import 'package:quark_web/core/l10n/app_strings.dart';
 
 class ToolsSection extends StatefulWidget {
   const ToolsSection({super.key});

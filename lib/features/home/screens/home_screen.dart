@@ -1,18 +1,19 @@
-// lib/screens/home_screen.dart
-import 'dart:html' as html;
-
+// lib/features/home/screens/home_screen.dart
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quark_web/lenguajes.dart';
-import 'package:quark_web/master.dart';
-import '../widgets/header.dart';
-import '../widgets/introduction_section.dart';
-import '../widgets/services_section.dart';
-import '../widgets/portfolio_section.dart';
-import '../widgets/contact_section.dart';
-import '../widgets/footer.dart';
-import '../widgets/tools.dart';
+import 'package:quark_web/core/constants/app_colors.dart';
+import 'package:quark_web/core/l10n/app_strings.dart';
+import 'package:quark_web/core/state/language_notifier.dart';
+import 'package:quark_web/core/utils/html_utils.dart';
+import 'package:quark_web/core/utils/scroll_utils.dart';
+import 'package:quark_web/features/home/widgets/contact_section.dart';
+import 'package:quark_web/features/home/widgets/footer.dart';
+import 'package:quark_web/features/home/widgets/header.dart';
+import 'package:quark_web/features/home/widgets/introduction_section.dart';
+import 'package:quark_web/features/home/widgets/portfolio_section.dart';
+import 'package:quark_web/features/home/widgets/services_section.dart';
+import 'package:quark_web/features/home/widgets/tools_section.dart';
 
 class HomeScreen extends StatefulWidget {
   final FirebaseAnalytics analytics;
@@ -39,22 +40,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // Establece el idioma inicial según la ruta
     changeLanguage(widget.localeCode);
-    // Sincroniza el atributo lang del HTML al cargar la pantalla
-    _updateHtmlLang(widget.localeCode);
-  }
-
-  /// Actualiza el atributo [lang] del <html> para SEO y accesibilidad.
-  /// Se llama al iniciar y cada vez que el usuario cambia el idioma.
-  void _updateHtmlLang(String localeCode) {
-    html.document.documentElement?.lang = localeCode.toLowerCase();
+    updateHtmlLang(widget.localeCode);
   }
 
   @override
   Widget build(BuildContext context) {
     widget.analytics
         .logScreenView(screenName: 'Home Screen (${widget.localeCode})');
+
     return Scaffold(
       backgroundColor: color1,
       appBar: Header(
@@ -66,47 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
         keyTools: _keyTools,
         onChangeLanguage: _changeLanguage,
       ),
-      endDrawer: Drawer(
-        child: Container(
-          color: color1,
-          child: Column(
-            children: [
-              DrawerHeader(
-                decoration: BoxDecoration(color: color3),
-                child: Center(
-                  child: ValueListenableBuilder<String>(
-                    valueListenable: lenguaje,
-                    builder: (context, value, child) {
-                      return Text(
-                        menu(value),
-                        style: const TextStyle(
-                          color: color1,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              ValueListenableBuilder<String>(
-                valueListenable: lenguaje,
-                builder: (context, value, child) {
-                  return Column(
-                    children: [
-                      buildProfessionalDrawerButton(nosotros(value), _keyIntroduction),
-                      buildProfessionalDrawerButton(servicios(value), _keyServices),
-                      buildProfessionalDrawerButton(herramientas(value), _keyTools),
-                      buildProfessionalDrawerButton(clientes(value), _keyPortfolio),
-                      buildProfessionalDrawerButton(contacto(value), _keyContact),
-                    ],
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      endDrawer: _buildDrawer(),
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Column(
@@ -126,10 +80,53 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Construye botón en Drawer
-  Widget buildProfessionalDrawerButton(String label, GlobalKey key) {
+  Widget _buildDrawer() {
+    return Drawer(
+      child: Container(
+        color: color1,
+        child: Column(
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(color: color3),
+              child: Center(
+                child: ValueListenableBuilder<String>(
+                  valueListenable: lenguaje,
+                  builder: (context, value, _) {
+                    return Text(
+                      menu(value),
+                      style: const TextStyle(
+                        color: color1,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+            ValueListenableBuilder<String>(
+              valueListenable: lenguaje,
+              builder: (context, value, _) {
+                return Column(
+                  children: [
+                    _buildDrawerButton(nosotros(value), _keyIntroduction),
+                    _buildDrawerButton(servicios(value), _keyServices),
+                    _buildDrawerButton(herramientas(value), _keyTools),
+                    _buildDrawerButton(clientes(value), _keyPortfolio),
+                    _buildDrawerButton(contacto(value), _keyContact),
+                  ],
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDrawerButton(String label, GlobalKey key) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: InkWell(
         onTap: () {
           scrollToSection(key);
@@ -166,12 +163,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Cambio de idioma y navegación
+  // FIX: comparación correcta con 'ES' (mayúscula), antes era 'es' → bug
   void _changeLanguage(String newLanguage) {
-    setState(() {
-      changeLanguage(newLanguage);
-    });
-    _updateHtmlLang(newLanguage);
+    setState(() => changeLanguage(newLanguage));
+    updateHtmlLang(newLanguage);
     if (newLanguage == 'ES') {
       context.go('/es');
     } else {

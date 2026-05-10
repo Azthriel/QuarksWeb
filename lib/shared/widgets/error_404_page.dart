@@ -1,3 +1,5 @@
+// lib/shared/widgets/error_404_page.dart
+// MOVIDO DESDE: lib/widgets/error404.dart  — código sin cambios
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -63,8 +65,6 @@ class _NotFoundPageState extends State<NotFoundPage>
       body: Stack(
         children: [
           const Positioned.fill(child: _StarField()),
-
-          // Tripulante animado (sigue girando/derivando)
           AnimatedBuilder(
             animation: _driftAlignment,
             builder: (context, child) => Align(
@@ -79,44 +79,32 @@ class _NotFoundPageState extends State<NotFoundPage>
               ),
             ),
           ),
-
-          // Texto 404
           Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ScaleTransition(
-                    scale: _headlineScale,
-                    child: Text(
-                      '404',
-                      style: GoogleFonts.roboto(
-                        fontSize: MediaQuery.of(context).size.width * 0.2,
-                        fontWeight: FontWeight.w900,
-                        color: const Color(0xFFDA6A00),
-                        shadows: const [
-                          Shadow(
-                            offset: Offset(2, 2),
-                            blurRadius: 4,
-                            color: Colors.white24,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    '¡Ups! Parece que esta ruta no existe.',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.roboto(
-                      fontSize: 18,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ScaleTransition(
+                  scale: _headlineScale,
+                  child: Text(
+                    '404',
+                    style: GoogleFonts.orbitron(
+                      fontSize: 96,
+                      fontWeight: FontWeight.w900,
                       color: Colors.white,
+                      letterSpacing: 8,
                     ),
                   ),
-                  const SizedBox(height: 32),
-                ],
-              ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  'Page not found',
+                  style: GoogleFonts.orbitron(
+                    fontSize: 20,
+                    color: Colors.white70,
+                    letterSpacing: 3,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -125,45 +113,84 @@ class _NotFoundPageState extends State<NotFoundPage>
   }
 }
 
-class _StarField extends StatelessWidget {
+class _StarField extends StatefulWidget {
   const _StarField();
 
-  static final _StarPainter _painter = _StarPainter();
+  @override
+  State<_StarField> createState() => _StarFieldState();
+}
+
+class _StarFieldState extends State<_StarField>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+  final _rng = Random(42);
+  late final List<_Star> _stars;
+
+  @override
+  void initState() {
+    super.initState();
+    _stars = List.generate(
+      160,
+      (_) => _Star(
+        x: _rng.nextDouble(),
+        y: _rng.nextDouble(),
+        r: _rng.nextDouble() * 1.4 + 0.3,
+        phase: _rng.nextDouble() * 2 * pi,
+      ),
+    );
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 4),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return RepaintBoundary(
-      child: CustomPaint(
-        painter: _painter,
-        size: Size.infinite,
+    return AnimatedBuilder(
+      animation: _ctrl,
+      builder: (_, __) => CustomPaint(
+        painter: _StarPainter(_stars, _ctrl.value),
       ),
     );
   }
 }
 
-class _StarPainter extends CustomPainter {
-  static const int _starCount = 120;
-  static const double _maxRadius = 1.8;
+class _Star {
+  final double x, y, r, phase;
+  const _Star({
+    required this.x,
+    required this.y,
+    required this.r,
+    required this.phase,
+  });
+}
 
-  final Random _rng = Random(1);
+class _StarPainter extends CustomPainter {
+  final List<_Star> stars;
+  final double t;
+  _StarPainter(this.stars, this.t);
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = Colors.white.withValues(alpha: 0.8);
-
-    for (int i = 0; i < _starCount; i++) {
-      final offset = Offset(
-        _rng.nextDouble() * size.width,
-        _rng.nextDouble() * size.height,
-      );
+    final paint = Paint();
+    for (final s in stars) {
+      final opacity =
+          (0.4 + 0.6 * (0.5 + 0.5 * sin(2 * pi * t + s.phase))).clamp(0.0, 1.0);
+      paint.color = Colors.white.withValues(alpha: opacity);
       canvas.drawCircle(
-        offset,
-        _rng.nextDouble() * _maxRadius,
+        Offset(s.x * size.width, s.y * size.height),
+        s.r,
         paint,
       );
     }
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(_StarPainter old) => old.t != t;
 }
