@@ -1,9 +1,17 @@
-<!-- index.html (English version) -->
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <base href="$FLUTTER_BASE_HREF">
+
+  <!-- Set lang attribute dynamically based on URL path before Flutter loads -->
+  <script>
+    (function () {
+      var lang = window.location.pathname.startsWith('/es') ? 'es' : 'en';
+      document.documentElement.setAttribute('lang', lang);
+    })();
+  </script>
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">

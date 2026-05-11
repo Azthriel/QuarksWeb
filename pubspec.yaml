@@ -4,12 +4,17 @@ publish_to: "none"
 version: 0.2.0
 
 environment:
-  sdk: ^3.5.4
+  sdk: ^3.7.0
 
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^6.2.1
+  flutter_web_plugins:
+    sdk: flutter
+
+  google_fonts: ^7.0.0
+  web: ^1.1.0
+
   visibility_detector: ^0.4.0+2
   carousel_slider: ^5.0.0
   firebase_core: ^3.8.1
@@ -35,19 +40,20 @@ flutter:
   assets:
     - assets/isotipo.png
     - assets/isologo.png
-    - assets/office.png
-    - assets/mobile_app.png
-    - assets/web_development.png
-    - assets/software_development.png
-    - assets/janodanihugoproyect.png
+    - assets/misc/office.png
+    - assets/services/mobile_app.png
+    - assets/services/web_development.png
+    - assets/services/software_development.png
+    - assets/portfolio/janodanihugoproyect.png
     - assets/favicon.jpeg
-    - assets/awsLogo.png
-    - assets/dartLogo.png
-    - assets/firebaseLogo.png
-    - assets/flutterLogo.png
-    - assets/androidLogo.png
-    - assets/iosLogo.png
-    - assets/pythonLogo.webp
-    - assets/en.png
-    - assets/es.png
-    - assets/amongus_crewmate.png
+    - assets/tools/awsLogo.png
+    - assets/tools/dartLogo.png
+    - assets/tools/firebaseLogo.png
+    - assets/tools/flutterLogo.png
+    - assets/tools/androidLogo.png
+    - assets/tools/iosLogo.png
+    - assets/tools/pythonLogo.webp
+    - assets/misc/en.png
+    - assets/misc/es.png
+    - assets/misc/amongus_crewmate.png
+    - assets/portfolio/eventosspa.png
