@@ -49,7 +49,7 @@ class IntroductionSectionState extends State<IntroductionSection>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: color1,
+      color: Theme.of(context).colorScheme.surface,
       child: FadeTransition(
         opacity: _opacityAnimation,
         child: SlideTransition(
@@ -95,7 +95,7 @@ class IntroductionSectionState extends State<IntroductionSection>
                     style: TextStyle(
                       fontSize: constraints.maxWidth > 800 ? 36 : 24,
                       fontWeight: FontWeight.bold,
-                      color: color0,
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontFamily: 'Roboto',
                     ),
                   ),
@@ -105,7 +105,7 @@ class IntroductionSectionState extends State<IntroductionSection>
                     style: TextStyle(
                       fontSize: constraints.maxWidth > 800 ? 20 : 16,
                       fontWeight: FontWeight.w400,
-                      color: color0,
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontFamily: 'Roboto',
                     ),
                   ),
@@ -114,14 +114,14 @@ class IntroductionSectionState extends State<IntroductionSection>
                     child: ElevatedButton(
                       onPressed: widget.onGoToServices,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: color0,
+                        backgroundColor: Theme.of(context).colorScheme.onSurface,
                         padding: const EdgeInsets.symmetric(
                             horizontal: 40, vertical: 20),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
                         elevation: 10,
-                        shadowColor: color0.withValues(alpha: 0.5),
+                        shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
                         textStyle: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -170,7 +170,7 @@ class IntroductionSectionState extends State<IntroductionSection>
           style: TextStyle(
             fontSize: constraints.maxWidth > 600 ? 36 : 24,
             fontWeight: FontWeight.bold,
-            color: color0,
+            color: Theme.of(context).colorScheme.onSurface,
             fontFamily: 'Roboto',
           ),
           textAlign: TextAlign.center,
@@ -181,7 +181,7 @@ class IntroductionSectionState extends State<IntroductionSection>
           style: TextStyle(
             fontSize: constraints.maxWidth > 600 ? 20 : 16,
             fontWeight: FontWeight.w400,
-            color: color0,
+            color: Theme.of(context).colorScheme.onSurface,
             fontFamily: 'Roboto',
           ),
           textAlign: TextAlign.center,
@@ -191,7 +191,7 @@ class IntroductionSectionState extends State<IntroductionSection>
           child: ElevatedButton(
             onPressed: widget.onGoToServices,
             style: ElevatedButton.styleFrom(
-              backgroundColor: color0,
+              backgroundColor: Theme.of(context).colorScheme.onSurface,
               padding: EdgeInsets.symmetric(
                   horizontal: 40,
                   vertical: constraints.maxWidth > 600 ? 20 : 15),
@@ -199,7 +199,7 @@ class IntroductionSectionState extends State<IntroductionSection>
                 borderRadius: BorderRadius.circular(30),
               ),
               elevation: 10,
-              shadowColor: color0.withValues(alpha: 0.5),
+              shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
               textStyle: TextStyle(
                 fontSize: constraints.maxWidth > 600 ? 22 : 18,
                 fontWeight: FontWeight.bold,

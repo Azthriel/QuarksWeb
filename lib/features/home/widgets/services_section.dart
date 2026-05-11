@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:visibility_detector/visibility_detector.dart';
-import 'package:quark_web/core/constants/app_colors.dart';
 import 'package:quark_web/core/state/language_notifier.dart';
 import 'package:quark_web/core/l10n/app_strings.dart';
 
@@ -41,24 +40,30 @@ class ServicesSectionState extends State<ServicesSection>
       vsync: this,
     );
 
-    _offsetAnimation1 =
-        Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(
+    _offsetAnimation1 = Tween<Offset>(
+      begin: const Offset(1, 0),
+      end: Offset.zero,
+    ).animate(
       CurvedAnimation(parent: _animationController1, curve: Curves.easeInOut),
     );
     _opacityAnimation1 = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController1, curve: Curves.easeInOut),
     );
 
-    _offsetAnimation2 =
-        Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(
+    _offsetAnimation2 = Tween<Offset>(
+      begin: const Offset(1, 0),
+      end: Offset.zero,
+    ).animate(
       CurvedAnimation(parent: _animationController2, curve: Curves.easeInOut),
     );
     _opacityAnimation2 = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController2, curve: Curves.easeInOut),
     );
 
-    _offsetAnimation3 =
-        Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(
+    _offsetAnimation3 = Tween<Offset>(
+      begin: const Offset(1, 0),
+      end: Offset.zero,
+    ).animate(
       CurvedAnimation(parent: _animationController3, curve: Curves.easeInOut),
     );
     _opacityAnimation3 = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -77,7 +82,7 @@ class ServicesSectionState extends State<ServicesSection>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: color1,
+      color: Theme.of(context).colorScheme.surface,
       padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 16),
       child: Center(
         child: ConstrainedBox(
@@ -91,7 +96,7 @@ class ServicesSectionState extends State<ServicesSection>
                 style: GoogleFonts.roboto(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
-                  color: color0,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -101,7 +106,9 @@ class ServicesSectionState extends State<ServicesSection>
                 style: GoogleFonts.roboto(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
-                  color: color0.withValues(alpha:0.7),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.7),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -122,7 +129,11 @@ class ServicesSectionState extends State<ServicesSection>
                   opacityAnimation: _opacityAnimation1,
                 ),
               ),
-              const Divider(color: color0, thickness: 1, height: 40),
+              Divider(
+                color: Theme.of(context).colorScheme.onSurface,
+                thickness: 1,
+                height: 40,
+              ),
               VisibilityDetector(
                 key: const Key('service-2'),
                 onVisibilityChanged: (info) {
@@ -139,7 +150,11 @@ class ServicesSectionState extends State<ServicesSection>
                   opacityAnimation: _opacityAnimation2,
                 ),
               ),
-              const Divider(color: color0, thickness: 1, height: 40),
+              Divider(
+                color: Theme.of(context).colorScheme.onSurface,
+                thickness: 1,
+                height: 40,
+              ),
               VisibilityDetector(
                 key: const Key('service-3'),
                 onVisibilityChanged: (info) {
@@ -156,7 +171,11 @@ class ServicesSectionState extends State<ServicesSection>
                   opacityAnimation: _opacityAnimation3,
                 ),
               ),
-              const Divider(color: color0, thickness: 1, height: 40),
+              Divider(
+                color: Theme.of(context).colorScheme.onSurface,
+                thickness: 1,
+                height: 40,
+              ),
             ],
           ),
         ),
@@ -189,7 +208,7 @@ class ServicesSectionState extends State<ServicesSection>
               _buildTextSection(title, description),
               const SizedBox(width: 40),
               _buildImage(imagePath),
-            ]
+            ],
           ],
         ),
       ),
@@ -201,11 +220,7 @@ class ServicesSectionState extends State<ServicesSection>
   Widget _buildImage(String imagePath) {
     return Expanded(
       flex: 1,
-      child: Image.asset(
-        imagePath,
-        fit: BoxFit.contain,
-        height: 350,
-      ),
+      child: Image.asset(imagePath, fit: BoxFit.contain, height: 350),
     );
   }
   //*- Widget para la imagen -*\\
@@ -222,7 +237,7 @@ class ServicesSectionState extends State<ServicesSection>
             style: GoogleFonts.roboto(
               fontSize: 28,
               fontWeight: FontWeight.bold,
-              color: color0,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 16),
@@ -231,12 +246,13 @@ class ServicesSectionState extends State<ServicesSection>
             style: GoogleFonts.roboto(
               fontSize: 18,
               fontWeight: FontWeight.normal,
-              color: color0,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ],
       ),
     );
   }
+
   //*- Widget para la sección de texto -*\\
 }

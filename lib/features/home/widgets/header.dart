@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quark_web/core/constants/app_colors.dart';
 import 'package:quark_web/core/state/language_notifier.dart';
+import 'package:quark_web/core/state/theme_notifier.dart';
 import 'package:quark_web/core/utils/scroll_utils.dart';
 import 'package:quark_web/core/l10n/app_strings.dart';
 
@@ -35,15 +36,16 @@ class Header extends StatefulWidget implements PreferredSizeWidget {
 class HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
+    final bg = Theme.of(context).colorScheme.surface;
     return PreferredSize(
       preferredSize: widget.preferredSize,
       child: Container(
-        color: color1,
+        color: bg,
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth > 800) {
-              return _buildLargeScreen();
+              return _buildLargeScreen(context);
             } else {
               return _buildSmallScreen(context);
             }
@@ -53,35 +55,73 @@ class HeaderState extends State<Header> {
     );
   }
 
+  // ─── Switch de tema ───────────────────────────────────────────────────────
+  Widget _buildThemeSwitch() {
+    final fg = Theme.of(context).colorScheme.onSurface;
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: temaApp,
+      builder: (_, mode, __) {
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.light_mode, size: 18, color: fg),
+            Switch(
+              value: mode == ThemeMode.dark,
+              onChanged: (_) => toggleTheme(),
+              activeThumbColor: color3,
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            Icon(Icons.dark_mode, size: 18, color: fg),
+          ],
+        );
+      },
+    );
+  }
+
   //*- Pantallas grandes -*\\
-  Widget _buildLargeScreen() {
+  Widget _buildLargeScreen(BuildContext context) {
     return Center(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          maxWidth: 1200,
-        ),
+        constraints: const BoxConstraints(maxWidth: 1200),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              'assets/isologo.png',
-              height: 60,
+            Image.asset('assets/isologo.png', height: 40),
+            Row(
+              children: [
+                buildHeaderButton(
+                  nosotros(lenguaje.value),
+                  widget.keyIntroduction,
+                  context,
+                ),
+                buildHeaderButton(
+                  servicios(lenguaje.value),
+                  widget.keyServices,
+                  context,
+                ),
+                buildHeaderButton(
+                  herramientas(lenguaje.value),
+                  widget.keyTools,
+                  context,
+                ),
+                buildHeaderButton(
+                  clientes(lenguaje.value),
+                  widget.keyPortfolio,
+                  context,
+                ),
+                buildHeaderButton(
+                  contacto(lenguaje.value),
+                  widget.keyContact,
+                  context,
+                ),
+              ],
             ),
-            const Expanded(child: SizedBox()),
-            ValueListenableBuilder<String>(
-              valueListenable: lenguaje,
-              builder: (context, value, child) {
-                return Row(
-                  children: [
-                    buildHeaderButton(nosotros(value), widget.keyIntroduction),
-                    buildHeaderButton(servicios(value), widget.keyServices),
-                    buildHeaderButton(herramientas(value), widget.keyTools),
-                    buildHeaderButton(clientes(value), widget.keyPortfolio),
-                    buildHeaderButton(contacto(value), widget.keyContact),
-                    buildLanguageMenu(),
-                  ],
-                );
-              },
+            Row(
+              children: [
+                _buildThemeSwitch(),
+                const SizedBox(width: 8),
+                buildLanguageMenu(),
+              ],
             ),
           ],
         ),
@@ -92,32 +132,29 @@ class HeaderState extends State<Header> {
 
   //*- Pantallas pequeñas -*\\
   Widget _buildSmallScreen(BuildContext context) {
+    final fg = Theme.of(context).colorScheme.onSurface;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Image.asset('assets/isologo.png', height: 36),
         Row(
           children: [
-            Image.asset(
-              'assets/isologo.png',
-              height: 50,
+            _buildThemeSwitch(),
+            IconButton(
+              icon: Icon(Icons.menu, color: fg),
+              onPressed: () => Scaffold.of(context).openEndDrawer(),
             ),
           ],
-        ),
-        const Spacer(),
-        buildLanguageMenu(),
-        IconButton(
-          icon: const Icon(Icons.menu, color: color0, size: 30),
-          onPressed: () {
-            Scaffold.of(context).openEndDrawer();
-          },
         ),
       ],
     );
   }
   //*- Pantallas pequeñas -*\\
 
-  //*- Dropdown de idioma -*\\
+  // ... (mantené el buildLanguageMenu igual pero cambiá los colores hardcodeados a Theme.of(context))
   Widget buildLanguageMenu() {
+    final fg = Theme.of(context).colorScheme.onSurface;
+    final bg = Theme.of(context).colorScheme.surface;
     return PopupMenuButton<String>(
       onSelected: (String language) {
         if (lenguaje.value != language) {
@@ -127,7 +164,7 @@ class HeaderState extends State<Header> {
       },
       icon: Row(
         children: [
-          const Icon(Icons.language, color: color0),
+          Icon(Icons.language, color: fg),
           const SizedBox(width: 5),
           ValueListenableBuilder<String>(
             valueListenable: lenguaje,
@@ -136,7 +173,7 @@ class HeaderState extends State<Header> {
                 value.toUpperCase(),
                 style: GoogleFonts.poppins(
                   fontSize: 16,
-                  color: color0,
+                  color: fg,
                   fontWeight: FontWeight.w600,
                 ),
               );
@@ -144,11 +181,9 @@ class HeaderState extends State<Header> {
           ),
         ],
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 8,
-      color: Colors.white,
+      color: bg,
       itemBuilder: (BuildContext context) {
         return languages.map((String language) {
           return PopupMenuItem<String>(
@@ -168,11 +203,11 @@ class HeaderState extends State<Header> {
                   language,
                   style: GoogleFonts.poppins(
                     fontSize: 18,
-                    fontWeight: lenguaje.value == language
-                        ? FontWeight.bold
-                        : FontWeight.normal,
-                    color:
-                        lenguaje.value == language ? Colors.blue : Colors.black,
+                    fontWeight:
+                        lenguaje.value == language
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                    color: lenguaje.value == language ? Colors.blue : fg,
                   ),
                 ),
                 if (lenguaje.value == language)
@@ -190,5 +225,5 @@ class HeaderState extends State<Header> {
         }).toList();
       },
     );
-  } //*- Dropdown de idioma -*\\
+  }
 }

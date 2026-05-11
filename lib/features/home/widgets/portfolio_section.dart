@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:quark_web/core/constants/app_colors.dart';
 import 'package:quark_web/core/state/language_notifier.dart';
 import 'package:quark_web/core/l10n/app_strings.dart';
 
@@ -22,7 +21,7 @@ class PortfolioSectionState extends State<PortfolioSection> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 16),
-      color: color1,
+      color: Theme.of(context).colorScheme.surface,
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1200),
@@ -50,7 +49,7 @@ class PortfolioSectionState extends State<PortfolioSection> {
           style: GoogleFonts.roboto(
             fontSize: 36,
             fontWeight: FontWeight.bold,
-            color: color0,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
           textAlign: TextAlign.center,
         ),
@@ -60,7 +59,7 @@ class PortfolioSectionState extends State<PortfolioSection> {
           style: GoogleFonts.roboto(
             fontSize: 20,
             fontWeight: FontWeight.normal,
-            color: color0.withValues(alpha:0.7),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.7),
           ),
           textAlign: TextAlign.center,
         ),
@@ -107,7 +106,7 @@ class PortfolioSectionState extends State<PortfolioSection> {
           style: GoogleFonts.roboto(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: color0,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
           textAlign: TextAlign.center,
         ),
@@ -117,7 +116,7 @@ class PortfolioSectionState extends State<PortfolioSection> {
           style: GoogleFonts.roboto(
             fontSize: 16,
             fontWeight: FontWeight.normal,
-            color: color0.withValues(alpha:0.7),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.7),
           ),
           textAlign: TextAlign.center,
         ),

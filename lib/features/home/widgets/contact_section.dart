@@ -76,7 +76,7 @@ class ContactSectionState extends State<ContactSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: color1,
+      color: Theme.of(context).colorScheme.surface,
       padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 16),
       child: Center(
         child: ConstrainedBox(
@@ -89,7 +89,7 @@ class ContactSectionState extends State<ContactSection> {
                 style: GoogleFonts.roboto(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
-                  color: color0,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -99,7 +99,9 @@ class ContactSectionState extends State<ContactSection> {
                 style: GoogleFonts.roboto(
                   fontSize: 18,
                   fontWeight: FontWeight.normal,
-                  color: color0.withValues(alpha:0.7),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.7),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -144,14 +146,19 @@ class ContactSectionState extends State<ContactSection> {
                       child: ElevatedButton(
                         onPressed: validateAndSubmit,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: color0,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.onSurface,
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 40, vertical: 15),
+                            horizontal: 40,
+                            vertical: 15,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
                           elevation: 10,
-                          shadowColor: color0.withValues(alpha:0.5),
+                          shadowColor: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withValues(alpha: 0.5),
                         ),
                         child: Text(
                           sendButton(lenguaje.value),
@@ -187,26 +194,34 @@ class ContactSectionState extends State<ContactSection> {
       keyboardType: keyboardType ?? TextInputType.text,
       cursorColor: color3,
       decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: color0),
+        prefixIcon: Icon(icon, color: Theme.of(context).colorScheme.onSurface),
         labelText: label,
         labelStyle: GoogleFonts.roboto(
-          color: color0.withValues(alpha:0.7),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
           fontSize: 18,
         ),
         hintText: hintText,
         hintStyle: GoogleFonts.roboto(
-          color: color0.withValues(alpha:0.5),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
           fontSize: 16,
         ),
         filled: true,
-        fillColor: color3.withValues(alpha:0.1),
+        fillColor: color3.withValues(alpha: 0.1),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(color: color0.withValues(alpha:0.5), width: 1),
+          borderSide: BorderSide(
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.5),
+            width: 1,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(color: color0, width: 2),
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.onSurface,
+            width: 2,
+          ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),

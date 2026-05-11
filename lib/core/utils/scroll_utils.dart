@@ -1,9 +1,6 @@
-// lib/core/utils/scroll_utils.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quark_web/core/constants/app_colors.dart';
 
-//*- Desplazamiento de sección -*\\
 void scrollToSection(GlobalKey key) {
   final context = key.currentContext;
   if (context != null) {
@@ -14,19 +11,16 @@ void scrollToSection(GlobalKey key) {
     );
   }
 }
-//*- Desplazamiento de sección -*\\
 
-//*- Botón genérico de header -*\\
-Widget buildHeaderButton(String title, GlobalKey key) {
+Widget buildHeaderButton(String title, GlobalKey key, BuildContext context) {
   return TextButton(
     onPressed: () => scrollToSection(key),
     child: Text(
       title,
       style: GoogleFonts.roboto(
         fontSize: 18,
-        color: color0,
+        color: Theme.of(context).colorScheme.onSurface,
       ),
     ),
   );
 }
-//*- Botón genérico de header -*\\

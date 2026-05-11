@@ -46,11 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    widget.analytics
-        .logScreenView(screenName: 'Home Screen (${widget.localeCode})');
+    widget.analytics.logScreenView(
+      screenName: 'Home Screen (${widget.localeCode})',
+    );
 
     return Scaffold(
-      backgroundColor: color1,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: Header(
         scrollController: _scrollController,
         keyIntroduction: _keyIntroduction,
@@ -81,9 +82,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildDrawer() {
+    final bg = Theme.of(context).colorScheme.surface;
+    final fg = Theme.of(context).colorScheme.onSurface;
     return Drawer(
       child: Container(
-        color: color1,
+        color: bg,
         child: Column(
           children: [
             DrawerHeader(
@@ -94,8 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (context, value, _) {
                     return Text(
                       menu(value),
-                      style: const TextStyle(
-                        color: color1,
+                      style: TextStyle(
+                        color: fg,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -150,10 +153,10 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Center(
             child: Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: color1,
+                color: Theme.of(context).colorScheme.onSurface,
                 letterSpacing: 1.2,
               ),
             ),
@@ -163,7 +166,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // FIX: comparación correcta con 'ES' (mayúscula), antes era 'es' → bug
   void _changeLanguage(String newLanguage) {
     setState(() => changeLanguage(newLanguage));
     updateHtmlLang(newLanguage);
