@@ -74,10 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ToolsSection(key: _keyTools),
             PortfolioSection(key: _keyPortfolio),
             ContactSection(key: _keyContact),
+            const Footer(),
           ],
         ),
       ),
-      bottomNavigationBar: const Footer(),
     );
   }
 

@@ -391,10 +391,10 @@ String completeMessage(String lang) {
 String footer(String lang) {
   switch (lang) {
     case 'ES':
-      return '© 2024 Quarks Studio - Todos los derechos reservados';
+      return '™ 2024 / 2026 Quarks Studio - Todos los derechos reservados';
     case 'EN':
-      return '© 2024 Quarks Studio - All rights reserved';
+      return '™ 2024 / 2026 Quarks Studio - All rights reserved';
     default:
-      return '© 2024 Quarks Studio - Todos los derechos reservados';
+      return '™ 2024 / 2026 Quarks Studio - Todos los derechos reservados';
   }
 }
