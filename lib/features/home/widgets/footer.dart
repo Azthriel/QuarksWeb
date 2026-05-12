@@ -121,13 +121,13 @@ class _CopyrightBar extends StatelessWidget {
                   children: [
                     Text(
                       copyright,
-                      style: GoogleFonts.roboto(fontSize: 12, color: textMuted),
+                      style: GoogleFonts.poppins(fontSize: 12, color: textMuted),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 6),
                     Text(
                       madeWith,
-                      style: GoogleFonts.roboto(fontSize: 12, color: textMuted),
+                      style: GoogleFonts.poppins(fontSize: 12, color: textMuted),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -138,11 +138,11 @@ class _CopyrightBar extends StatelessWidget {
                 children: [
                   Text(
                     copyright,
-                    style: GoogleFonts.roboto(fontSize: 12, color: textMuted),
+                    style: GoogleFonts.poppins(fontSize: 12, color: textMuted),
                   ),
                   Text(
                     madeWith,
-                    style: GoogleFonts.roboto(fontSize: 12, color: textMuted),
+                    style: GoogleFonts.poppins(fontSize: 12, color: textMuted),
                   ),
                 ],
               );
@@ -181,7 +181,7 @@ class _BrandColumn extends StatelessWidget {
           errorBuilder:
               (_, __, ___) => Text(
                 'QUARKS STUDIO',
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w900,
                   color: color3,
@@ -192,7 +192,7 @@ class _BrandColumn extends StatelessWidget {
         const SizedBox(height: 16),
         Text(
           tagline,
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 14,
             color: textMuted,
             height: 1.65,
@@ -349,7 +349,7 @@ class _SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title.toUpperCase(),
-      style: GoogleFonts.roboto(
+      style: GoogleFonts.poppins(
         fontSize: 10,
         fontWeight: FontWeight.w700,
         color: textMuted,
@@ -379,7 +379,7 @@ class _FooterInfoItem extends StatelessWidget {
         Expanded(
           child: Text(
             value,
-            style: GoogleFonts.roboto(
+            style: GoogleFonts.poppins(
               fontSize: 14,
               color: Colors.white.withValues(alpha: 0.6),
               height: 1.4,

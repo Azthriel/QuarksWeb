@@ -214,7 +214,7 @@ class ContactSectionState extends State<ContactSection> {
       children: [
         Text(
           title,
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 42,
             fontWeight: FontWeight.w900,
             color: textPrimary,
@@ -224,7 +224,7 @@ class ContactSectionState extends State<ContactSection> {
         const SizedBox(height: 20),
         Text(
           subtitle,
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 15,
             color: textPrimary.withValues(alpha: 0.6),
             height: 1.65,
@@ -419,7 +419,7 @@ class _Field extends StatelessWidget {
       children: [
         Text(
           label,
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 13,
             fontWeight: FontWeight.w600,
             color: textPrimary.withValues(alpha: 0.75),
@@ -431,10 +431,10 @@ class _Field extends StatelessWidget {
           maxLines: maxLines ?? 1,
           keyboardType: keyboardType ?? TextInputType.text,
           cursorColor: color3,
-          style: GoogleFonts.roboto(fontSize: 14, color: textPrimary),
+          style: GoogleFonts.poppins(fontSize: 14, color: textPrimary),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: GoogleFonts.roboto(
+            hintStyle: GoogleFonts.poppins(
               fontSize: 14,
               color: textPrimary.withValues(alpha: 0.35),
             ),
@@ -501,7 +501,7 @@ class _ContactInfoItem extends StatelessWidget {
           children: [
             Text(
               label,
-              style: GoogleFonts.roboto(
+              style: GoogleFonts.poppins(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
                 color: textPrimary.withValues(alpha: 0.4),
@@ -511,7 +511,7 @@ class _ContactInfoItem extends StatelessWidget {
             const SizedBox(height: 2),
             Text(
               value,
-              style: GoogleFonts.roboto(
+              style: GoogleFonts.poppins(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
                 color: textPrimary,

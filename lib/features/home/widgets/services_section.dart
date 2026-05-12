@@ -93,7 +93,7 @@ class ServicesSectionState extends State<ServicesSection>
               const SizedBox(height: 20),
               Text(
                 serviceTitle(lenguaje.value),
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.poppins(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.onSurface,
@@ -103,7 +103,7 @@ class ServicesSectionState extends State<ServicesSection>
               const SizedBox(height: 16),
               Text(
                 serviceDescription(lenguaje.value),
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
                   color: Theme.of(
@@ -234,7 +234,7 @@ class ServicesSectionState extends State<ServicesSection>
         children: [
           Text(
             title,
-            style: GoogleFonts.roboto(
+            style: GoogleFonts.poppins(
               fontSize: 28,
               fontWeight: FontWeight.bold,
               color: Theme.of(context).colorScheme.onSurface,
@@ -243,7 +243,7 @@ class ServicesSectionState extends State<ServicesSection>
           const SizedBox(height: 16),
           Text(
             description,
-            style: GoogleFonts.roboto(
+            style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.normal,
               color: Theme.of(context).colorScheme.onSurface,

@@ -17,7 +17,7 @@ Widget buildHeaderButton(String title, GlobalKey key, BuildContext context) {
     onPressed: () => scrollToSection(key),
     child: Text(
       title,
-      style: GoogleFonts.roboto(
+      style: GoogleFonts.poppins(
         fontSize: 18,
         color: Theme.of(context).colorScheme.onSurface,
       ),

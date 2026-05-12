@@ -1,5 +1,6 @@
 // lib/core/constants/app_themes.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quark_web/core/constants/app_colors.dart';
 
 const Color _darkBg = Color(0xFF121212);
@@ -15,6 +16,7 @@ final ThemeData lightTheme = ThemeData(
     onSurface: color0,
   ),
   scaffoldBackgroundColor: color1,
+  textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme),
   textSelectionTheme: TextSelectionThemeData(
     cursorColor: color3,
     selectionColor: color3.withAlpha(70),
@@ -34,6 +36,7 @@ final ThemeData darkTheme = ThemeData(
     onSurface: _darkText,
   ),
   scaffoldBackgroundColor: _darkBg,
+  textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme),
   textSelectionTheme: TextSelectionThemeData(
     cursorColor: color3,
     selectionColor: color3.withAlpha(70),

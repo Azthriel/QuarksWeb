@@ -176,7 +176,7 @@ class _SectionHeader extends StatelessWidget {
               const SizedBox(height: 12),
               Text(
                 title,
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.poppins(
                   fontSize: 34,
                   fontWeight: FontWeight.w900,
                   color: textPrimary,
@@ -186,7 +186,7 @@ class _SectionHeader extends StatelessWidget {
               const SizedBox(height: 16),
               Text(
                 subtitle,
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.poppins(
                   fontSize: 16,
                   color: textPrimary.withValues(alpha: 0.55),
                   height: 1.5,
@@ -207,7 +207,7 @@ class _SectionHeader extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     title,
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.poppins(
                       fontSize: 52,
                       fontWeight: FontWeight.w900,
                       color: textPrimary,
@@ -222,7 +222,7 @@ class _SectionHeader extends StatelessWidget {
               width: 280,
               child: Text(
                 subtitle,
-                style: GoogleFonts.roboto(
+                style: GoogleFonts.poppins(
                   fontSize: 18,
                   color: textPrimary.withValues(alpha: 0.55),
                   height: 1.6,
@@ -245,7 +245,7 @@ class _TagLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.roboto(
+      style: GoogleFonts.poppins(
         fontSize: 11,
         fontWeight: FontWeight.w700,
         color: color3,
@@ -387,7 +387,7 @@ class _ProjectCarouselState extends State<_ProjectCarousel> {
                                     const SizedBox(height: 10),
                                     Text(
                                       'asset pendiente',
-                                      style: GoogleFonts.roboto(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 13,
                                         color: accent.withValues(alpha: 0.4),
                                       ),
@@ -455,7 +455,7 @@ class _ProjectInfo extends StatelessWidget {
             const SizedBox(width: 14),
             Text(
               '/ ${project.number.toString().padLeft(2, '0')}',
-              style: GoogleFonts.roboto(
+              style: GoogleFonts.poppins(
                 fontSize: 14,
                 color: textPrimary.withValues(alpha: 0.35),
                 fontWeight: FontWeight.w500,
@@ -466,7 +466,7 @@ class _ProjectInfo extends StatelessWidget {
         const SizedBox(height: 20),
         Text(
           name,
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 28,
             fontWeight: FontWeight.w800,
             color: textPrimary,
@@ -476,7 +476,7 @@ class _ProjectInfo extends StatelessWidget {
         const SizedBox(height: 14),
         Text(
           desc,
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 15,
             color: textPrimary.withValues(alpha: 0.65),
             height: 1.7,
@@ -511,7 +511,7 @@ class _CategoryBadge extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: GoogleFonts.roboto(
+        style: GoogleFonts.poppins(
           fontSize: 10,
           fontWeight: FontWeight.w700,
           color: color,
@@ -538,7 +538,7 @@ class _TechTag extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: GoogleFonts.roboto(
+        style: GoogleFonts.poppins(
           fontSize: 13,
           color: textPrimary.withValues(alpha: 0.75),
           fontWeight: FontWeight.w500,
