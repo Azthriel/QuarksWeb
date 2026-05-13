@@ -29,15 +29,16 @@ class IntroductionSectionState extends State<IntroductionSection>
     )..forward();
 
     // Animacion de opacidad
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _opacityAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     // Animacion de deslizamiento
-    _slideAnimation =
-        Tween<Offset>(begin: const Offset(0, 0.5), end: Offset.zero).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, 0.5),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
   }
 
   @override
@@ -55,8 +56,10 @@ class IntroductionSectionState extends State<IntroductionSection>
         child: SlideTransition(
           position: _slideAnimation,
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 20.0,
+            ),
             child: LayoutBuilder(
               builder: (context, constraints) {
                 if (constraints.maxWidth < 800) {
@@ -77,9 +80,7 @@ class IntroductionSectionState extends State<IntroductionSection>
   Widget _buildLargeScreen(BoxConstraints constraints) {
     return Center(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          maxWidth: 1200,
-        ),
+        constraints: const BoxConstraints(maxWidth: 1200),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -96,7 +97,6 @@ class IntroductionSectionState extends State<IntroductionSection>
                       fontSize: constraints.maxWidth > 800 ? 36 : 24,
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.onSurface,
-                      fontFamily: 'Roboto',
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -106,7 +106,6 @@ class IntroductionSectionState extends State<IntroductionSection>
                       fontSize: constraints.maxWidth > 800 ? 20 : 16,
                       fontWeight: FontWeight.w400,
                       color: Theme.of(context).colorScheme.onSurface,
-                      fontFamily: 'Roboto',
                     ),
                   ),
                   const SizedBox(height: 60),
@@ -114,14 +113,19 @@ class IntroductionSectionState extends State<IntroductionSection>
                     child: ElevatedButton(
                       onPressed: widget.onGoToServices,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.onSurface,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.onSurface,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 40, vertical: 20),
+                          horizontal: 40,
+                          vertical: 20,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
                         elevation: 10,
-                        shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+                        shadowColor: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withValues(alpha: 0.5),
                         textStyle: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -171,7 +175,6 @@ class IntroductionSectionState extends State<IntroductionSection>
             fontSize: constraints.maxWidth > 600 ? 36 : 24,
             fontWeight: FontWeight.bold,
             color: Theme.of(context).colorScheme.onSurface,
-            fontFamily: 'Roboto',
           ),
           textAlign: TextAlign.center,
         ),
@@ -182,7 +185,6 @@ class IntroductionSectionState extends State<IntroductionSection>
             fontSize: constraints.maxWidth > 600 ? 20 : 16,
             fontWeight: FontWeight.w400,
             color: Theme.of(context).colorScheme.onSurface,
-            fontFamily: 'Roboto',
           ),
           textAlign: TextAlign.center,
         ),
@@ -193,13 +195,16 @@ class IntroductionSectionState extends State<IntroductionSection>
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.onSurface,
               padding: EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: constraints.maxWidth > 600 ? 20 : 15),
+                horizontal: 40,
+                vertical: constraints.maxWidth > 600 ? 20 : 15,
+              ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
               elevation: 10,
-              shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+              shadowColor: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.5),
               textStyle: TextStyle(
                 fontSize: constraints.maxWidth > 600 ? 22 : 18,
                 fontWeight: FontWeight.bold,
@@ -220,14 +225,12 @@ class IntroductionSectionState extends State<IntroductionSection>
           padding: const EdgeInsets.only(top: 20),
           child: AspectRatio(
             aspectRatio: 1.2,
-            child: Image.asset(
-              'assets/misc/office.png',
-              fit: BoxFit.contain,
-            ),
+            child: Image.asset('assets/misc/office.png', fit: BoxFit.contain),
           ),
         ),
       ],
     );
   }
+
   //*- Pantallas pequeñas -*\\
 }

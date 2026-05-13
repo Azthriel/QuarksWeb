@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     changeLanguage(widget.localeCode);
     updateHtmlLang(widget.localeCode);
+    updateSeoMeta(widget.localeCode);
   }
 
   @override
@@ -74,10 +75,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ToolsSection(key: _keyTools),
             PortfolioSection(key: _keyPortfolio),
             ContactSection(key: _keyContact),
+            const Footer(),
           ],
         ),
       ),
-      bottomNavigationBar: const Footer(),
     );
   }
 
@@ -174,5 +175,6 @@ class _HomeScreenState extends State<HomeScreen> {
     } else {
       context.go('/');
     }
+    updateSeoMeta(newLanguage);
   }
 }

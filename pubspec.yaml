@@ -1,7 +1,7 @@
 name: quark_web
 description: "Deja el desarrollo en nuestras manos, enfócate en crecer."
 publish_to: "none"
-version: 0.2.0
+version: 0.3.0
 
 environment:
   sdk: ^3.7.0
@@ -21,6 +21,8 @@ dependencies:
   firebase_analytics: ^11.3.6
   cloud_firestore: ^5.5.1
   go_router: ^15.1.1
+  font_awesome_flutter: ^11.0.0
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
@@ -44,7 +46,6 @@ flutter:
     - assets/services/mobile_app.png
     - assets/services/web_development.png
     - assets/services/software_development.png
-    - assets/portfolio/janodanihugoproyect.png
     - assets/favicon.jpeg
     - assets/tools/awsLogo.png
     - assets/tools/dartLogo.png
@@ -56,4 +57,12 @@ flutter:
     - assets/misc/en.png
     - assets/misc/es.png
     - assets/misc/amongus_crewmate.png
-    - assets/portfolio/eventosspa.png
+    - assets/portfolio/quiropraxia_1.png
+    - assets/portfolio/quiropraxia_2.png
+    - assets/portfolio/quiropraxia_3.png
+    - assets/portfolio/sanpablo_1.png
+    - assets/portfolio/sanpablo_2.png
+    - assets/portfolio/sanpablo_3.png
+    - assets/portfolio/eyhera_1.png
+    - assets/portfolio/eyhera_2.png
+    - assets/portfolio/eyhera_3.png

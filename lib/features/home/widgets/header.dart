@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quark_web/core/constants/app_colors.dart';
 import 'package:quark_web/core/state/language_notifier.dart';
@@ -64,14 +65,14 @@ class HeaderState extends State<Header> {
         return Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.light_mode, size: 18, color: fg),
+            FaIcon(FontAwesomeIcons.sun, size: 18, color: fg),
             Switch(
               value: mode == ThemeMode.dark,
               onChanged: (_) => toggleTheme(),
               activeThumbColor: color3,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            Icon(Icons.dark_mode, size: 18, color: fg),
+            FaIcon(FontAwesomeIcons.moon, size: 18, color: fg),
           ],
         );
       },
@@ -140,6 +141,7 @@ class HeaderState extends State<Header> {
         Row(
           children: [
             _buildThemeSwitch(),
+            buildLanguageMenu(),
             IconButton(
               icon: Icon(Icons.menu, color: fg),
               onPressed: () => Scaffold.of(context).openEndDrawer(),
@@ -151,7 +153,6 @@ class HeaderState extends State<Header> {
   }
   //*- Pantallas pequeñas -*\\
 
-  // ... (mantené el buildLanguageMenu igual pero cambiá los colores hardcodeados a Theme.of(context))
   Widget buildLanguageMenu() {
     final fg = Theme.of(context).colorScheme.onSurface;
     final bg = Theme.of(context).colorScheme.surface;
@@ -164,7 +165,7 @@ class HeaderState extends State<Header> {
       },
       icon: Row(
         children: [
-          Icon(Icons.language, color: fg),
+          FaIcon(FontAwesomeIcons.language, color: fg),
           const SizedBox(width: 5),
           ValueListenableBuilder<String>(
             valueListenable: lenguaje,

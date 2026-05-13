@@ -51,7 +51,7 @@ class ToolsSectionState extends State<ToolsSection> {
       children: [
         Text(
           toolsTitle(lenguaje.value),
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 36,
             fontWeight: FontWeight.bold,
             color: Theme.of(context).colorScheme.onSurface,
@@ -61,7 +61,7 @@ class ToolsSectionState extends State<ToolsSection> {
         const SizedBox(height: 16),
         Text(
           toolsDescription(lenguaje.value),
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.normal,
             color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.7),
@@ -108,7 +108,7 @@ class ToolsSectionState extends State<ToolsSection> {
       children: [
         Text(
           toolsTitle(lenguaje.value),
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Theme.of(context).colorScheme.onSurface,
@@ -118,7 +118,7 @@ class ToolsSectionState extends State<ToolsSection> {
         const SizedBox(height: 16),
         Text(
           toolsDescription(lenguaje.value),
-          style: GoogleFonts.roboto(
+          style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.normal,
             color: Theme.of(context).colorScheme.onSurface.withValues(alpha:0.7),
