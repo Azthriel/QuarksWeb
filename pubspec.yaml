@@ -23,6 +23,10 @@ dependencies:
   go_router: ^15.1.1
   font_awesome_flutter: ^11.0.0
   url_launcher: ^6.3.2
+  quarks_version_checker:
+    git:
+      url: https://github.com/quarks-studio/quarks_version_checker
+      ref: v1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -66,3 +70,6 @@ flutter:
     - assets/portfolio/eyhera_1.png
     - assets/portfolio/eyhera_2.png
     - assets/portfolio/eyhera_3.png
+    - assets/portfolio/atmtc_1.png
+    - assets/portfolio/atmtc_2.png
+    - assets/portfolio/atmtc_3.png

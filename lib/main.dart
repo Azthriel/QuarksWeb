@@ -7,11 +7,15 @@ import 'package:quark_web/core/constants/app_themes.dart';
 import 'package:quark_web/core/router/app_router.dart';
 import 'package:quark_web/core/state/theme_notifier.dart';
 import 'package:quark_web/firebase_options.dart';
+import 'package:quarks_version_checker/quarks_version_checker.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   usePathUrlStrategy();
+  try {
+    await AppVersionChecker.instance.start();
+  } catch (_) {}
   if (kIsWeb) SemanticsBinding.instance.ensureSemantics();
   runApp(const MyApp());
 }
