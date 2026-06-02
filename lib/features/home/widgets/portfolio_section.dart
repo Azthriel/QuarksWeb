@@ -89,6 +89,24 @@ const List<PortfolioProject> _projects = [
       'assets/portfolio/eyhera_3.png',
     ],
   ),
+  PortfolioProject(
+    categoryES: 'PÁGINA WEB',
+    categoryEN: 'LANDING PAGE',
+    categoryColor: color3,
+    number: 4,
+    nameES: 'A tu mesa todo caserito',
+    nameEN: 'A tu mesa todo caserito',
+    descriptionES:
+        'Página web diseñada para atraer clientes y asegurar ventas, con implementación SEO completa y redirección a Whatsapp',
+    descriptionEN:
+        'Website designed to attract customers and secure sales, with full SEO implementation and redirection to WhatsApp',
+    tags: ['Flutter', 'Firebase', 'API de Whatsapp', 'SEO'],
+    images: [
+      'assets/portfolio/atmtc_1.png',
+      'assets/portfolio/atmtc_2.png',
+      'assets/portfolio/atmtc_3.png',
+    ],
+  ),
 ];
 
 // ---------------------------------------------------------------------------
